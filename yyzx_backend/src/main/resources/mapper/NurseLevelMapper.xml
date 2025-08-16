@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqupt.mapper.NurseLevelMapper">
+    <!--    通用查询映射结果-->
+    <resultMap id="BaseResultMap" type="com.cqupt.pojo.Nurselevel">
+        <id column="id" property="id"/>
+        <result column="level_name" property="levelName"/>
+        <result column="level_status" property="levelStatus"/>
+        <result column="is_deleted" property="isDeleted"/>
+    </resultMap>
+    <!--    通用查询结果列-->
+    <sql id="Base_Column_List">
+        <include refid="Base_Column_List" />
+    </sql>
+</mapper>

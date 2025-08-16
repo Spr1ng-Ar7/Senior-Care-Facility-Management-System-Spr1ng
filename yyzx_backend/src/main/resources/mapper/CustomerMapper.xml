@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqupt.mapper.CustomerMapper">
+
+    <!--    通用查询映射结果-->
+    <resultMap id="BaseResultMap" type="com.cqupt.pojo.Customer">
+        <id column="id" property="id"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="customer_name" property="customerName"/>
+        <result column="customer_age" property="customerAge"/>
+        <result column="customer_sex" property="customerSex"/>
+        <result column="idcard" property="idcard"/>
+        <result column="room_no" property="roomNo"/>
+        <result column="building_no" property="buildingNo"/>
+        <result column="checkin_date" property="checkinDate"/>
+        <result column="expiration_date" property="expirationDate"/>
+        <result column="contact_tel" property="contactTel"/>
+        <result column="bed_id" property="bedId"/>
+        <result column="psychosomatic_state" property="psychosomaticState"/>
+        <result column="attention" property="attention"/>
+        <result column="birthday" property="birthday"/>
+        <result column="height" property="height"/>
+        <result column="weight" property="weight"/>
+        <result column="blood_type" property="bloodType"/>
+        <result column="filepath" property="filepath"/>
+        <result column="user_id" property="userId"/>
+        <result column="level_id" property="levelId"/>
+        <result column="family_member" property="familyMember"/>
+    </resultMap>
+    <!--    通用查询结果列-->
+    <sql id="Base_Column_List">
+        <include refid="Base_Column_List" />
+    </sql>
+
+    <select id="selectPageVo" resultType="khxxCustomerVo">
+        SELECT
+            c.id,
+            c.is_deleted,
+            c.customer_name,
+            c.customer_age,
+            c.customer_sex,
+            c.idcard,
+            c.room_no,
+            c.building_no,
+            c.checkin_date,
+            c.expiration_date,
+            c.contact_tel,
+            c.bed_id,
+            c.psychosomatic_state,
+            c.attention,
+            c.birthday,
+            c.height,
+            c.weight,
+            c.blood_type,
+            c.filepath,
+            c.user_id,
+            c.level_id,
+            c.family_member,
+            n.level_name,
+            u.nickname,
+            b.bed_no
+        FROM
+            customer c
+                LEFT JOIN bed b ON c.bed_id = b.id
+                LEFT JOIN nurselevel n ON c.level_id = n.id
+                LEFT JOIN user u ON c.user_id = u.id
+        <where>
+            <if test="manType!=null and manType==1">
+                and (select count(1) from customernurseitem cni where cni.custormer_id=c.id and cni.is_deleted=0)=0
+            </if>
+            <if test="manType!=null and manType==2">
+                and (select count(1) from customernurseitem cni where cni.custormer_id=c.id and cni.is_deleted=0)>0
+            </if>
+            <if test="manType!=null and manType==3">
+                and c.user_id=-1
+            </if>
+            <if test="customerName!=null and customerName!=''">
+                and c.customer_name like concat('%',#{customerName},'%')
+            </if>
+            <if test="userId!=null">
+                and c.user_id = #{userId}
+            </if>
+            and c.is_deleted = 0
+        </where>
+        order by c.id desc
+    </select>
+
+
+</mapper>
+
+
+

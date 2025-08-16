@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqupt.mapper.OutwardMapper">
+    <!--    通用查询映射结果-->
+    <resultMap id="BaseResultMap" type="com.cqupt.pojo.Outward">
+        <id column="id" property="id"/>
+        <result column="remarks" property="remarks"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="customer_id" property="customerId"/>
+        <result column="outgoingreason" property="outgoingreason"/>
+        <result column="outgoingtime" property="outgoingtime"/>
+        <result column="expectedreturntime" property="expectedreturntime"/>
+        <result column="actualreturntime" property="actualreturntime"/>
+        <result column="escorted" property="escorted"/>
+        <result column="relation" property="relation"/>
+        <result column="escortedtel" property="escortedtel"/>
+        <result column="auditstatus" property="auditstatus"/>
+        <result column="auditperson" property="auditperson"/>
+        <result column="audittime" property="audittime"/>
+    </resultMap>
+    <!--    通用查询结果列-->
+    <sql id="Base_Column_List">
+        <include refid="Base_Column_List" />
+    </sql>
+    <select id="selectOutwardVo" resultType="com.cqupt.vo.OutwardVo">
+        SELECT
+
+            o.id,
+            o.remarks,
+            o.is_deleted,
+            o.customer_id,
+            o.outgoingreason,
+            o.outgoingtime,
+            o.expectedreturntime,
+            o.actualreturntime,
+            o.escorted,
+            o.relation,
+            o.escortedtel,
+            o.auditstatus,
+            o.auditperson,
+            o.audittime,
+            u.nickname,
+            u.phone_number,
+            nc.serial_number,
+            nc.nursing_name,
+            cs.customer_name
+        FROM
+            outward o,
+            user u,
+            nursecontent nc,
+            customer cs,
+            customernurseitem cni
+        <where>
+            cs.user_id = u.id
+            AND cs.id = o.customer_id
+            AND o.customer_id = cni.custormer_id
+            AND nc.id = cni.item_id
+            AND o.is_deleted =0
+            <if test="userId!=null and userId!=''">
+                and u.id = #{userId}
+            </if>
+
+        </where>
+
+    </select>
+</mapper>

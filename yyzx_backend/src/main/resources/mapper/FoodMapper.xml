@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqupt.mapper.FoodMapper">
+
+    <!--    通用查询映射结果-->
+    <resultMap id="BaseResultMap" type="com.cqupt.pojo.Food">
+        <id column="id" property="id"/>
+        <result column="food_name" property="foodName"/>
+        <result column="price" property="price"/>
+        <result column="food_type" property="foodType"/>
+        <result column="is_halal" property="isHalal"/>
+        <result column="food_img" property="foodImg"/>
+    </resultMap>
+    <!--    通用查询结果列-->
+    <sql id="Base_Column_List">
+        <include refid="Base_Column_List" />
+    </sql>
+</mapper>

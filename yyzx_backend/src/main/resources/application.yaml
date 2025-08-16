@@ -1,0 +1,30 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /yyzx
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yyzx?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+#springfox swagger 不支持spring2.7以上版本
+#springfox使用的匹配路径是基于ant_path_matcher，而不是基于PathPatternParser
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher
+#日期和时间配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+#mybatis-plus配置
+mybatis-plus:
+  configuration:
+    #打印mybatis-plus日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #mapper xml的映射位置
+  mapper-locations: classpath:/mapper/*.xml
+  #项目实体包路径的配置
+  type-aliases-package: com.cqupt.pojo,com.cqupt.vo,com.cqupt.dto
+
+
