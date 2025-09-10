@@ -1,4 +1,4 @@
-# 🏥 医保报销系统
+# 🏥 汤老远系统
 
 [![Java](https://img.shields.io/badge/Java-1.8+-orange.svg)]()
 [![Spring Boot](https://img.shields.io/badge/SpringBoot-2.x-brightgreen.svg)]()
@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 [![Build](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]()
 
-> 基于 **Spring Boot + MyBatis + Vue3 + Element UI** 开发的医保报销系统，集成丰富的报销等级、患者管理、医疗订单、药品、医疗器械等功能模块，支持前后端分离，提供完整的可视化 Swagger API 文档。  
+> 基于 **Spring Boot + MyBatis + Vue3 + Element UI** 开发的养老院系统，集成丰富的报销等级、患者管理、医疗订单、药品、医疗器械等功能模块，支持前后端分离，提供完整的可视化 Swagger API 文档。  
 > 适合医疗机构报销管理、二次开发与教学演示。
 
 ---
@@ -27,7 +27,7 @@
 ---
 
 ## 📌 项目简介
-医保报销系统针对医疗机构的医保报销流程，设计实现了报销等级配置、患者信息管理、费用明细管理、医疗订单管理等核心功能模块。  
+养老院管理系统针对医疗机构的医保报销流程，设计实现了报销等级配置、患者信息管理、费用明细管理、医疗订单管理等核心功能模块。  
 系统采用前后端分离架构，后端基于Spring Boot+MyBatis，前端采用Vue3和Element UI，提供了完善的API接口和可视化文档，支持高效开发与维护。
 
 ---
