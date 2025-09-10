@@ -1,4 +1,4 @@
-# 🏥 汤老远系统
+# 🏥 养老院管理系统
 
 [![Java](https://img.shields.io/badge/Java-1.8+-orange.svg)]()
 [![Spring Boot](https://img.shields.io/badge/SpringBoot-2.x-brightgreen.svg)]()
